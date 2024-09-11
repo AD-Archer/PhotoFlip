@@ -16,7 +16,7 @@ const images = [
       src: "https://cdn.pixabay.com/photo/2018/03/02/21/49/waves-3194377_1280.jpg",
       link: "https://www.example.com/waves",
       alt: "Waves",
-      music: "https://www.youtube.com/results?search_query=pirate+channel+wii+theme"
+      music: "https://www.youtube.com/watch?v=vzGUGq5CHio"
     }
 ];
 
