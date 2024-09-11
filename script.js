@@ -4,7 +4,7 @@ const images = [
       src: "https://cdn.pixabay.com/photo/2013/11/01/11/13/dolphin-203875_1280.jpg",
       link: "https://www.example.com/dolphin",
       alt: "Dolphin",
-      music: "https://www.youtube.com/watch?v=aatr_2MstrI"
+      music: "https://youtu.be/aatr_2MstrI?si=4z7RIdec3TyvfYcm&t=84"
     },
     {
       src: "https://cdn.pixabay.com/photo/2016/11/22/23/12/beach-1851101_1280.jpg",
