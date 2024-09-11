@@ -8,9 +8,12 @@ html, body {
     background-color: lightseagreen;
     text-align: center;
 }
-
+footer{    
+    background-color: rgb(26, 216, 207);
+    color: white;
+}
 img {
-    max-width: 100%;
+    width: auto;
     height: auto;
     margin: 20px 0;
 }
