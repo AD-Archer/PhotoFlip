@@ -18,40 +18,40 @@ const images = [
       alt: "Waves",
       music: "https://www.youtube.com/results?search_query=pirate+channel+wii+theme"
     }
-  ];
-  
-  // Set the starting image index
-  let currentIndex = 0;
-  
-  // Select the DOM elements
-  const mainImage = document.getElementById('mainImage');
-  const imageLink = document.getElementById('imageLink');
-  const prevButton = document.getElementById('prevButton');
-  const nextButton = document.getElementById('nextButton');
-  const musicButton = document.getElementById('externalLink').onclick function()
+];
 
-  
-  // Function to update the image and link
-  function updateImage() {
-    mainImage.src = images[currentIndex].src;
-    mainImage.alt = images[currentIndex].alt;
-    imageLink.href = images[currentIndex].link;
-    musicButton.href = images[currentIndex].music;
+// Set the starting image index
+let currentIndex = 0;
 
-  }
-  
-  // Event listeners for the buttons
-  prevButton.addEventListener('click', () => {
-    currentIndex = (currentIndex - 1 + images.length) % images.length; // Cycle backward
-    updateImage();
-  });
-  
-  nextButton.addEventListener('click', () => {
-    currentIndex = (currentIndex + 1) % images.length; // Cycle forward
-    updateImage();
-  });
-  
+// Select the DOM elements
+const mainImage = document.getElementById('mainImage');
+const imageLink = document.getElementById('imageLink');
+const prevButton = document.getElementById('prevButton');
+const nextButton = document.getElementById('nextButton');
+const musicButton = document.getElementById('externalLink');
 
-  // Initialize with the first image
+// Set up the music button click event
+musicButton.onclick = function() {
+  window.location.href = images[currentIndex].music;
+};
+
+// Function to update the image and link
+function updateImage() {
+  mainImage.src = images[currentIndex].src;
+  mainImage.alt = images[currentIndex].alt;
+  imageLink.href = images[currentIndex].link;
+}
+
+// Event listeners for the buttons
+prevButton.addEventListener('click', () => {
+  currentIndex = (currentIndex - 1 + images.length) % images.length; // Cycle backward
   updateImage();
-  
+});
+
+nextButton.addEventListener('click', () => {
+  currentIndex = (currentIndex + 1) % images.length; // Cycle forward
+  updateImage();
+});
+
+// Initialize with the first image
+updateImage();
