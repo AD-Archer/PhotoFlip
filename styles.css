@@ -42,11 +42,12 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 40px;
+    padding: 20px;
     max-width: 1200px;
     margin: 0 auto;
 }
 
+/* Image Section */
 .image-section {
     text-align: center;
     margin-bottom: 40px;
@@ -81,8 +82,9 @@ img.show {
 .button-container {
     display: flex;
     gap: 15px;
-    flex-wrap: wrap;
+    flex-wrap: wrap; /* Allows buttons to wrap to the next line if necessary */
     justify-content: center;
+    margin-bottom: 40px;
 }
 
 button {
@@ -94,6 +96,7 @@ button {
     transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
     width: 180px; /* Fixed width for consistency */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    border-color: white;
 }
 
 button {
@@ -117,13 +120,13 @@ button:hover {
 
 /* Info Section Styles */
 .info-section {
-    background-color: #ff6f61; /* coral background for contrast */
+    background-color: #ff6f61; /* Coral background for contrast */
     border-radius: 10px; /* Rounded corners */
     padding: 20px;
     max-width: 800px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
     text-align: center;
-    color: white; /*white color for easier reading */
+    color: white; /* White color for easier reading */
 }
 
 .info-section h2 {
@@ -159,4 +162,65 @@ footer a {
 
 footer a:hover {
     text-decoration: underline;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.5em; /* Smaller header font size on mobile */
+    }
+
+    header p {
+        font-size: 0.9em; /* Smaller text for mobile */
+    }
+
+    .button-container {
+        flex-direction: column; /* Stack buttons vertically on small screens */
+        align-items: center; /* Center align buttons */
+    }
+
+    button {
+        width: 100%; /* Full width buttons on small screens */
+        max-width: 300px; /* Max width for buttons */
+    }
+
+    .image-container {
+        height: auto; /* Auto height for images on small screens */
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 20px 10px; /* Reduced padding for very small screens */
+    }
+
+    .info-section {
+        padding: 10px; /* Reduced padding for very small screens */
+    }
+
+    .button-container {
+        flex-direction: row; /* Arrange buttons in a row on very small screens */
+        gap: 10px; /* Reduced gap between buttons */
+        justify-content: center; /* Center the buttons */
+        overflow-x: auto; /* Allow horizontal scrolling if buttons overflow */
+    }
+
+    button {
+        width: 150px; /* Adjust width for very small screens */
+    }
+}
+
+/* Responsive Styles */
+@media (min-width: 490px) and (max-width: 770px) {
+    .button-container {
+        flex-direction: row; /* Arrange buttons in a row */
+        flex-wrap: nowrap; /* Prevent wrapping */
+        justify-content: center; /* Center align buttons */
+        gap: 15px; /* Space between buttons */
+    }
+
+    button {
+        width: auto; /* Allow buttons to size based on content */
+        max-width: 180px; /* Ensure buttons don't exceed this width */
+    }
 }
