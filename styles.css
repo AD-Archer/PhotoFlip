@@ -1,47 +1,162 @@
+/* General Styles */
 html, body {
     height: 100%;
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    background: linear-gradient(135deg, #a8c0ff, #3f2b96); /* Gradient from light blue to deep purple */
 }
 
-#background {
-    background-color: lightseagreen;
+/* Header Styles */
+header {
+    background: linear-gradient(135deg, #e0f7fa, #b3e5fc); /* Softer blue gradient */
+    color: #333;
     text-align: center;
+    padding: 30px 20px; /* Smaller padding for a more subtle appearance */
+    border-radius: 15px; /* Rounded corners for a softer look */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for a gentle effect */
+    margin: 20px auto; /* Margin for spacing around the header */
+    max-width: 100%; /* Center alignment */
 }
-footer{    
-    background-color: rgb(26, 216, 207);
-    color: white;
+
+.header-content {
+    margin: 0 auto;
 }
+
+header h1 {
+    margin: 0;
+    font-size: 2em; /* Smaller font size for a subtler header */
+    font-weight: 300; /* Light font weight for a softer look */
+    color: #0277bd; /* Softer blue color */
+}
+
+header p {
+    margin: 10px 0 0;
+    font-size: 1em;
+    line-height: 1.4;
+    color: #01579b; /* Slightly darker blue for text */
+}
+
+/* Main Styles */
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.image-section {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.image-container {
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 800px; /* Optional: restricts max width */
+    height: 500px; /* Fixed height */
+    display: flex;
+    justify-content: center;
+    overflow: hidden; /* Ensures that overflow is hidden */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    background-color: #ffffff; /* Background color for container */
+}
+
 img {
-    width: auto;
-    height: auto;
-    margin: 20px 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image covers the container without distortion */
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
 }
 
-/* Button Style */
+img.show {
+    opacity: 1;
+}
 
+/* Button Container Styles */
+.button-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
 
 button {
-    padding: 20px 30px; 
-    font-size: 24px;    
-    margin: 10px;
-    cursor: pointer;
+    padding: 15px 30px;
+    font-size: 18px;
     border: none;
-    background-color: black;
-    color: white;
-    border-radius: 8px; 
-    transition: transform 0.2s ease; /* Adds a subtle scaling effect when hovered */
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    width: 180px; /* Fixed width for consistency */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
 }
 
-
-#externalLink{
-    padding: 20px 30px;
-    color: rgb(242, 255, 0);
-    background-color: rgb(11, 84, 211);
+button {
+    background-color: #007bff; /* Bright blue */
+    color: #ffffff;
 }
 
-/* Hover effect for button */
 button:hover {
-    background-color: darkgrey;
-    transform: scale(1.1);
+    background-color: #0056b3; /* Darker blue */
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+}
+
+#externalLink {
+    background-color: #ff6f61; /* Coral */
+}
+
+#externalLink:hover {
+    background-color: #ff3d2e; /* Darker coral */
+}
+
+/* Info Section Styles */
+.info-section {
+    background-color: #ff6f61; /* coral background for contrast */
+    border-radius: 10px; /* Rounded corners */
+    padding: 20px;
+    max-width: 800px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    text-align: center;
+    color: white; /*white color for easier reading */
+}
+
+.info-section h2 {
+    margin-top: 0;
+    font-size: 2em;
+}
+
+.info-section p {
+    font-size: 1em;
+    line-height: 1.6;
+}
+
+/* Footer Styles */
+footer {
+    background: linear-gradient(135deg, #1e3c72, #2a5298); /* Gradient from dark blue to lighter blue */
+    color: #ffffff;
+    text-align: center;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+footer a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+footer a:hover {
+    text-decoration: underline;
 }

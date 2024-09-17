@@ -2,44 +2,41 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Photo Flip</title>
   <link href="styles.css" rel="stylesheet" type="text/css" />
   <script defer src="script.js"></script> 
 </head>
-
 <body>
-  <div id='background'>
-    <center>
-      <h1>Antonio Archer's Pirate Seafinder for pics of the 7 seas</h1>
-      <p>This program has a few eastereggs, click the symphony to enjoy a new song for every image</p>
-    
-    <hr color="black" size="10px" width="100%">
-
-    <main class="main">
-        <center>
-      <img src="https://cdn.pixabay.com/photo/2013/11/01/11/13/dolphin-203875_1280.jpg" 
-           alt="Dolphin" class="images" id="mainImage">
-        </center>
-      <br>
-      <!-- Button to exit page -->
-    <div>
-    <button id = 'externalLink'>Join the symphony</button>
+  <header>
+    <div class="header-content">
+      <h1>Antonio Archer's Pirate Seafinder for Pics of the 7 Seas</h1>
+      <p>This program has a few easter eggs; click the symphony to enjoy a new song for every image</p>
     </div>
+  </header>
 
-      <!-- Buttons to change images -->
+  <main>
+    <section class="image-section">
+      <div class="image-container">
+        <img src="https://cdn.pixabay.com/photo/2013/11/01/11/13/dolphin-203875_1280.jpg" alt="Dolphin" id="mainImage">
+      </div>
+      <div class="button-container">
+        <button id="prevButton">Previous</button>
+        <button id="nextButton">Next</button>
+        <button id="externalLink">Join the Symphony</button>
+      </div>
+    </section>
 
-      <button id = "prevButton">Previous</button>
-      <button id ="nextButton">Next</button>
-    </center>
-    </main>
-  </div>
+    <aside class="info-section">
+      <h2>About This Project</h2>
+      <p>This project is a showcase of interactive images with smooth transitions and accompanying music links. Explore various images and enjoy a new soundtrack for each!</p>
+    </aside>
+  </main>
 
   <footer>
-    <!-- Add your social media links -->
-     <center>
-    <a href="https://github.com/AD-Archer">Back to my github</a>
-  </center>
-</footer>
+    <div class="footer-content">
+      <a href="https://github.com/AD-Archer">Back to my GitHub</a>
+    </div>
+  </footer>
 </body>
 </html>
