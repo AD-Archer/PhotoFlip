@@ -40,8 +40,8 @@ header p {
 /* Main Styles */
 main {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row; /* Arrange content and sidebar horizontally */
+    align-items: flex-start; /* Align items at the start */
     padding: 20px;
     max-width: 1200px;
     margin: 0 auto;
@@ -49,8 +49,9 @@ main {
 
 /* Image Section */
 .image-section {
+    flex: 3; /* Allow image section to take up more space */
     text-align: center;
-    margin-bottom: 40px;
+    margin-right: 20px; /* Space between image section and sidebar */
 }
 
 .image-container {
@@ -79,12 +80,13 @@ img.show {
 }
 
 /* Button Container Styles */
+/* Button Container Styles */
 .button-container {
     display: flex;
+    justify-content: center; /* Center align buttons */
     gap: 15px;
+    margin-top: 20px; /* Add spacing above the buttons if needed */
     flex-wrap: wrap; /* Allows buttons to wrap to the next line if necessary */
-    justify-content: center;
-    margin-bottom: 40px;
 }
 
 button {
@@ -94,10 +96,11 @@ button {
     border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
-    width: 180px; /* Fixed width for consistency */
+    width: auto; /* Allow buttons to size based on content */
+    max-width: 180px; /* Ensure buttons don't exceed this width */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
-    border-color: white;
 }
+
 
 button {
     background-color: #007bff; /* Bright blue */
@@ -118,26 +121,49 @@ button:hover {
     background-color: #ff3d2e; /* Darker coral */
 }
 
-/* Info Section Styles */
-.info-section {
-    background-color: #ff6f61; /* Coral background for contrast */
-    border-radius: 10px; /* Rounded corners */
+/* Sidebar Styles */
+.sidebar {
+    flex: 1; /* Allow sidebar to take up less space */
+    background-color: #0277bd; /* Match the header background color */
+    color: #ffffff; /* White text color for contrast */
+    border-radius: 10px;
     padding: 20px;
-    max-width: 800px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
-    text-align: center;
-    color: white; /* White color for easier reading */
+    position: sticky; /* Sticky position for sidebar */
+    top: 0; /* Stick to the top */
+    max-height: calc(100vh - 40px); /* Adjust height to fit the viewport */
+    overflow-y: auto; /* Add scroll if the content overflows */
 }
 
-.info-section h2 {
+.sidebar h2 {
     margin-top: 0;
-    font-size: 2em;
+    font-size: 1.5em;
+    color: #ffffff; /* White header color */
 }
 
-.info-section p {
-    font-size: 1em;
-    line-height: 1.6;
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
+
+.sidebar li {
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ffffff; /* White border for contrast */
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.sidebar li:hover {
+    background-color: #01579b; /* Darker blue on hover */
+}
+
+.sidebar li.active {
+    background-color: #0288d1; /* Lighter blue for active item */
+}
+
 
 /* Footer Styles */
 footer {
@@ -187,40 +213,16 @@ footer a:hover {
     .image-container {
         height: auto; /* Auto height for images on small screens */
     }
-}
 
-@media (max-width: 480px) {
-    header {
-        padding: 20px 10px; /* Reduced padding for very small screens */
+    main {
+        flex-direction: column; /* Stack content and sidebar vertically on small screens */
     }
 
-    .info-section {
-        padding: 10px; /* Reduced padding for very small screens */
-    }
-
-    .button-container {
-        flex-direction: row; /* Arrange buttons in a row on very small screens */
-        gap: 10px; /* Reduced gap between buttons */
-        justify-content: center; /* Center the buttons */
-        overflow-x: auto; /* Allow horizontal scrolling if buttons overflow */
-    }
-
-    button {
-        width: 150px; /* Adjust width for very small screens */
-    }
-}
-
-/* Responsive Styles */
-@media (min-width: 490px) and (max-width: 770px) {
-    .button-container {
-        flex-direction: row; /* Arrange buttons in a row */
-        flex-wrap: nowrap; /* Prevent wrapping */
-        justify-content: center; /* Center align buttons */
-        gap: 15px; /* Space between buttons */
-    }
-
-    button {
-        width: auto; /* Allow buttons to size based on content */
-        max-width: 180px; /* Ensure buttons don't exceed this width */
+    .sidebar {
+        width: 100%;
+        margin-top: 20px;
+        max-height: none; /* Remove max-height constraint on small screens */
+        position: static; /* Static position for mobile */
+        overflow-y: visible; /* Show full content without scroll */
     }
 }

@@ -46,6 +46,7 @@ const mainImage = document.getElementById('mainImage');
 const prevButton = document.getElementById('prevButton');
 const nextButton = document.getElementById('nextButton');
 const musicButton = document.getElementById('externalLink');
+const imageList = document.getElementById('imageList');
 
 // Set up the music button click event
 musicButton.onclick = function() {
@@ -64,6 +65,19 @@ function updateImage() {
   }, 500); // Delay matches the CSS transition duration
 }
 
+// Function to create the sidebar
+function populateSidebar() {
+  images.forEach((image, index) => {
+    const listItem = document.createElement('li');
+    listItem.textContent = image.alt;
+    listItem.addEventListener('click', () => {
+      currentIndex = index;
+      updateImage();
+    });
+    imageList.appendChild(listItem);
+  });
+}
+
 // Event listeners for the buttons
 prevButton.addEventListener('click', () => {
   currentIndex = (currentIndex - 1 + images.length) % images.length; // Cycle backward
@@ -77,3 +91,4 @@ nextButton.addEventListener('click', () => {
 
 // Initialize with the first image
 updateImage();
+populateSidebar();
