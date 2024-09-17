@@ -23,6 +23,18 @@ const images = [
     link: "https://www.example.com/onepiece",
     alt: "One Piece",
     music: "https://www.youtube.com/watch?v=PwVT67T5Xt4"
+  },
+  {
+    src: "images/diveOllyDive.jpg",
+    link: "",
+    alt: "Dive Olly Dive",
+    music: "https://www.youtube.com/watch?v=QHFtmQdJm10"
+  },
+  {
+    src: "images/Subnautica.avif",
+    link: '',
+    alt: "Subnatica world record",
+    music: "https://www.youtube.com/watch?v=Gf4y00_Y8Ic"
   }
 ];
 
