@@ -4,39 +4,46 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Photo Flip</title>
-  <link href="styles.css" rel="stylesheet" type="text/css" />
-  <script defer src="script.js"></script> 
+  <link href="styles.css" rel="stylesheet" type="text/css" /> <!-- Link to external CSS -->
+  <script defer src="script.js"></script>
 </head>
-<body>
-  <header>
-    <div class="header-content">
-      <h1>Antonio Archer's Pirate Seafinder for Pics of the 7 Seas</h1>
-      <p>This program has a few easter eggs; click the symphony to enjoy a new song for every image</p>
-    </div>
-  </header>
 
-  <main>
-    <section class="image-section">
-      <div class="image-container">
-        <img src="https://cdn.pixabay.com/photo/2013/11/01/11/13/dolphin-203875_1280.jpg" alt="Dolphin" id="mainImage">
-      </div>
-      <div class="button-container">
+<body>
+  <div id='background'>
+    <center>
+      <section>
+        <!-- Section to hold introduction to page -->
+        <h1>Antonio Archer's Pirate Seafinder for Pics of the 7 Seas</h1>
+        <p>Explore easter eggs! Click the symphony button to enjoy a new song for every image.</p>
+      </section>
+      <hr>
+
+      <main class="main">
+         <!-- Holds image, caption external links and buttons -->
+        <figure>
+          <a id="imageLink" href="#">
+            <img src="https://cdn.pixabay.com/photo/2013/11/01/11/13/dolphin-203875_1280.jpg" 
+                 alt="Dolphin" class="images" id="mainImage">
+          </a>
+          <figcaption id="caption">Initial caption</figcaption>
+        </figure> 
+        <!-- Start of buttons -->
+        <div>
+           <button id='externalLink'>Symphony</button> <!--button that takes you to external website -->
+        </div>
+
         <button id="prevButton">Previous</button>
         <button id="nextButton">Next</button>
-        <button id="externalLink">Join the Symphony</button>
-      </div>
-    </section>
-
-    <aside class="sidebar">
-      <h2>Select an Image</h2>
-      <ul id="imageList"></ul>
-    </aside>
-  </main>
+      </main>
+    
+  </div>
 
   <footer>
-    <div class="footer-content">
-      <a href="https://github.com/AD-Archer">Back to my GitHub</a>
-    </div>
-  </footer>
+    <!-- footer -->
+    <center>
+    <a href="https://github.com/AD-Archer">Back to my GitHub</a>
+</center>
+</footer>
+
 </body>
 </html>
