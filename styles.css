@@ -226,3 +226,49 @@ footer a:hover {
         overflow-y: visible; /* Show full content without scroll */
     }
 }
+/* hide button's red color the rest of buttons are styled together*/
+#hideButton{
+    background-color: red;
+}
+
+/* Liked animation (scale up + glow effect) */
+@keyframes like-animation {
+    0% {
+      transform: scale(1);
+      box-shadow: none;
+    }
+    50% {
+      transform: scale(1.2);
+      box-shadow: 0 0 20px rgba(0, 255, 0, 0.8); /* Green glow */
+    }
+    100% {
+      transform: scale(1);
+      box-shadow: none;
+    }
+  }
+  
+  .liked {
+    animation: like-animation 1s ease;
+  }
+  
+  /* Disliked animation (shake effect + red tint) */
+  @keyframes dislike-animation {
+    0%, 100% {
+      transform: translateX(0);
+      filter: none;
+    }
+    25% {
+      transform: translateX(-10px);
+      filter: hue-rotate(150deg); /* Red tint */
+    }
+    75% {
+      transform: translateX(10px);
+      filter: hue-rotate(150deg); /* Red tint */
+    }
+  }
+  
+  .disliked {
+    animation: dislike-animation 1s ease;
+  }
+  
+  

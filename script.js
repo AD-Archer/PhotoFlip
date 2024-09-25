@@ -1,5 +1,5 @@
 // Array of images and links
-const images = [
+let images = [
   {
     src: "https://cdn.pixabay.com/photo/2013/11/01/11/13/dolphin-203875_1280.jpg",
     link: "https://www.example.com/dolphin",
@@ -38,6 +38,10 @@ const images = [
   }
 ];
 
+let hiddenImages = {} //hidden images
+let liked = {} //liked images
+let disliked = {}
+
 // Set the starting image index
 let currentIndex = 0;
 
@@ -45,6 +49,7 @@ let currentIndex = 0;
 const mainImage = document.getElementById('mainImage');
 const prevButton = document.getElementById('prevButton');
 const nextButton = document.getElementById('nextButton');
+const hideButton = document.getElementById("hideButton")
 const musicButton = document.getElementById('externalLink');
 const imageList = document.getElementById('imageList');
 
@@ -78,6 +83,24 @@ function populateSidebar() {
   });
 }
 
+function hideImage() {
+  // Add the current image to hiddenImages
+  hiddenImages[currentIndex] = images[currentIndex];
+
+  // Remove the image from the main images array
+  images.splice(currentIndex, 1);
+
+  // Handle the case where we removed the last image
+  if (currentIndex >= images.length) {
+    currentIndex = images.length - 1;
+  }
+
+  // Update the displayed image
+  updateImage();
+}
+
+
+
 // Event listeners for the buttons
 prevButton.addEventListener('click', () => {
   currentIndex = (currentIndex - 1 + images.length) % images.length; // Cycle backward
@@ -88,6 +111,29 @@ nextButton.addEventListener('click', () => {
   currentIndex = (currentIndex + 1) % images.length; // Cycle forward
   updateImage();
 });
+
+hideButton.addEventListener("click",hideImage)
+
+const likeButton = document.getElementById("likebutton");
+const dislikeButton = document.getElementById("dislikebutton");
+
+// Function to trigger like animation
+likeButton.addEventListener('click', () => {
+  mainImage.classList.add('liked');  // Add animation class
+  setTimeout(() => {
+    mainImage.classList.remove('liked');  // Remove after animation finishes
+  }, 1000);  // Duration matches CSS animation
+});
+
+// Function to trigger dislike animation
+dislikeButton.addEventListener('click', () => {
+  mainImage.classList.add('disliked');  // Add animation class
+  setTimeout(() => {
+    mainImage.classList.remove('disliked');  // Remove after animation finishes
+  }, 1000);  // Duration matches CSS animation
+});
+
+
 
 // Initialize with the first image
 updateImage();
