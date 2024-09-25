@@ -167,5 +167,8 @@ dislikeButton.addEventListener('click', () => {
 // Unhide button event listener
 document.getElementById("unhideButton").addEventListener("click", unhideImage);
 
+document.getElementById("comment-button").addEventListener("click", () => { //deletes clears text within 
+  document.getElementById("comment-text-area").innerText = ''
+});
 // Initialize the first image display
 updateImage();

@@ -69,6 +69,7 @@ img {
     object-fit: cover;
     opacity: 0;
     transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    border-radius: 50px;
 }
 
 img.show {
@@ -277,3 +278,49 @@ footer a:hover {
     
 }
 /* We chose to style figcaption and select and select hidden image within html */
+
+/* General Styles for Comment Section */
+.comment-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px auto; /* Center the section with margin */
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.1); /* Light background */
+    border-radius: 10px;
+    max-width: 800px; /* Set a max width */
+}
+
+/* Comment Text Area */
+#comment-text-area {
+    width: 100%; /* Full width */
+    height: 100px; /* Height for the text area */
+    border: 1px solid #ccc; /* Border color */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px; /* Padding inside the text area */
+    margin-bottom: 10px; /* Space below text area */
+}
+
+/* Separator Line */
+.comment-section hr {
+    width: 100%;
+    border: 1px solid gray; /* Grayish line */
+    margin: 20px 0; /* Spacing above and below the line */
+}
+
+/* Button Styles for Comment Section */
+.comment-section button {
+    padding: 10px 20px; /* Padding for the button */
+    font-size: 16px; /* Button font size */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    background-color: #007bff; /* Button background */
+    color: white; /* Text color */
+    cursor: pointer; /* Pointer cursor on hover */
+    display: flex;
+    align-items: center;
+}
+
+.comment-section button:hover {
+    background-color: #0056b3; /* Darker background on hover */
+}
