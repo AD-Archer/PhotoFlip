@@ -23,14 +23,12 @@
   <div id='background'>
     <center>
       <section>
-        <!-- Section to hold introduction to page -->
         <h1>Antonio Archer's Pirate Seafinder for Pics of the 7 Seas</h1>
         <p>Explore easter eggs! Click the symphony button to enjoy a new song for every image.</p>
       </section>
       <hr>
 
       <main class="main">
-         <!-- Holds image, caption external links and buttons -->
         <figure>
           <a id="imageLink" href="#">
             <img src="https://cdn.pixabay.com/photo/2013/11/01/11/13/dolphin-203875_1280.jpg" 
@@ -38,27 +36,39 @@
           </a>
           <figcaption id="caption"></figcaption>
         </figure> 
-        <!-- Start of buttons -->
         <div>
-           <button id='externalLink'>Symphony</button> <!--button that takes you to external website -->
+           <button id='externalLink'>Symphony</button>
         </div>
-
-        <button id="prevButton">Previous</button>
         <button id="nextButton">Next</button>
+        <button id="prevButton">Previous</button>
       </main>
+
       <section class="other-buttons" id="other-buttons">
-      <button id="likebutton">Like button</button>
-      <button id="hideButton">hide image</button>
-      <button id="dislikebutton">Dislike Button</button>
+        <button id="likebutton">Like button</button>
+        <button id="hideButton">Hide image</button>
+        <button id="dislikebutton">Dislike Button</button>
       </section>
+      <br>
+      <!-- New Hidden Images Section -->
+
+      <section id="menuSection">
+        <label for="hiddenImagesDropdown">Select Hidden Image:</label>
+        <select id="hiddenImagesDropdown">
+            <option value="">-- Select an Image --</option>
+        </select>
+        <button id="unhideButton" class="unhideButton">Unhide Selected</button>
+    </section>    
+
+    </center>
   </div>
 
   <footer>
-    <!-- footer -->
     <center>
-    <a href="https://github.com/AD-Archer">Back to my GitHub</a>
-</center>
-</footer>
+      <a href="https://github.com/AD-Archer">Back to my GitHub</a>
+    </center>
+  </footer>
 
+  <script defer src="script.js"></script>
 </body>
+
 </html>

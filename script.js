@@ -66,6 +66,11 @@ function updateImage() {
   setTimeout(() => {
     mainImage.src = images[currentIndex].src;
     mainImage.alt = images[currentIndex].alt;
+    
+    // Update the figcaption with the current image's alt text
+    const caption = document.getElementById('caption');
+    caption.textContent = images[currentIndex].alt; // Update the figcaption content
+
     mainImage.classList.add('show'); // Add class to show the image smoothly
   }, 500); // Delay matches the CSS transition duration
 }
@@ -132,6 +137,54 @@ dislikeButton.addEventListener('click', () => {
     mainImage.classList.remove('disliked');  // Remove after animation finishes
   }, 1000);  // Duration matches CSS animation
 });
+
+// Function to populate the hidden images dropdown
+function populateHiddenImagesDropdown() {
+  const dropdown = document.getElementById('hiddenImagesDropdown');
+  dropdown.innerHTML = ''; // Clear previous options
+  const defaultOption = document.createElement('option');
+  defaultOption.value = '';
+  defaultOption.textContent = '-- Select an Image --';
+  dropdown.appendChild(defaultOption);
+
+  // Populate the dropdown with hidden images
+  for (const index in hiddenImages) {
+      const option = document.createElement('option');
+      option.value = index;
+      option.textContent = hiddenImages[index].alt; // Use the alt text for display
+      dropdown.appendChild(option);
+  }
+}
+
+// Function to unhide the selected image
+function unhideImage() {
+  const dropdown = document.getElementById('hiddenImagesDropdown');
+  const selectedValue = dropdown.value;
+
+  if (selectedValue) {
+      // Add the image back to the main images array
+      const imageToUnhide = hiddenImages[selectedValue];
+      images.push(imageToUnhide);
+
+      // Remove the image from the hidden images
+      delete hiddenImages[selectedValue];
+
+      // Populate the dropdown again
+      populateHiddenImagesDropdown();
+
+      // Update the image display if necessary
+      if (currentIndex >= images.length) {
+          currentIndex = images.length - 1; // Adjust currentIndex if needed
+      }
+      updateImage();
+  }
+}
+
+// Add event listener to the unhide button
+document.getElementById('unhideButton').addEventListener('click', unhideImage);
+
+// Call the function to populate the dropdown initially
+populateHiddenImagesDropdown();
 
 
 

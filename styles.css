@@ -2,46 +2,42 @@
 html, body {
     height: 100%;
     margin: 0;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Roboto', sans-serif; /* Or Arial */
     color: #333;
-    background: linear-gradient(135deg, #a8c0ff, #3f2b96); /* Gradient from light blue to deep purple */
+    background: linear-gradient(135deg, #a8c0ff, #3f2b96);
 }
 
 /* Header Styles */
 header {
-    background: linear-gradient(135deg, #e0f7fa, #b3e5fc); /* Softer blue gradient */
+    background: linear-gradient(135deg, #e0f7fa, #b3e5fc);
     color: #333;
     text-align: center;
-    padding: 30px 20px; /* Smaller padding for a more subtle appearance */
-    border-radius: 15px; /* Rounded corners for a softer look */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for a gentle effect */
-    margin: 20px auto; /* Margin for spacing around the header */
-    max-width: 100%; /* Center alignment */
-}
-
-.header-content {
-    margin: 0 auto;
+    padding: 30px 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 100%;
 }
 
 header h1 {
     margin: 0;
-    font-size: 2em; /* Smaller font size for a subtler header */
-    font-weight: 300; /* Light font weight for a softer look */
-    color: #0277bd; /* Softer blue color */
+    font-size: 2em;
+    font-weight: 300;
+    color: #0277bd;
 }
 
 header p {
     margin: 10px 0 0;
     font-size: 1em;
     line-height: 1.4;
-    color: #01579b; /* Slightly darker blue for text */
+    color: #01579b;
 }
 
 /* Main Styles */
 main {
     display: flex;
-    flex-direction: row; /* Arrange content and sidebar horizontally */
-    align-items: flex-start; /* Align items at the start */
+    flex-direction: row;
+    align-items: flex-start;
     padding: 20px;
     max-width: 1200px;
     margin: 0 auto;
@@ -49,28 +45,28 @@ main {
 
 /* Image Section */
 .image-section {
-    flex: 3; /* Allow image section to take up more space */
+    flex: 3;
     text-align: center;
-    margin-right: 20px; /* Space between image section and sidebar */
+    margin-right: 20px;
 }
 
 .image-container {
     margin-bottom: 20px;
     width: 100%;
-    max-width: 800px; /* Optional: restricts max width */
-    height: 500px; /* Fixed height */
+    max-width: 800px;
+    aspect-ratio: 16/9; /* Or adjust to your desired aspect ratio */
     display: flex;
     justify-content: center;
-    overflow: hidden; /* Ensures that overflow is hidden */
-    border-radius: 10px; /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
-    background-color: #ffffff; /* Background color for container */
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: #ffffff;
 }
 
 img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Ensures the image covers the container without distortion */
+    object-fit: cover;
     opacity: 0;
     transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
 }
@@ -80,13 +76,12 @@ img.show {
 }
 
 /* Button Container Styles */
-/* Button Container Styles */
 .button-container {
     display: flex;
-    justify-content: center; /* Center align buttons */
+    justify-content: center;
     gap: 15px;
-    margin-top: 20px; /* Add spacing above the buttons if needed */
-    flex-wrap: wrap; /* Allows buttons to wrap to the next line if necessary */
+    margin-top: 20px;
+    flex-wrap: wrap;
 }
 
 button {
@@ -96,49 +91,49 @@ button {
     border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
-    width: auto; /* Allow buttons to size based on content */
-    max-width: 180px; /* Ensure buttons don't exceed this width */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    width: auto;
+    max-width: 180px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-
+/* Button Styles */
 button {
-    background-color: #007bff; /* Bright blue */
+    background-color: #007bff;
     color: #ffffff;
 }
 
 button:hover {
-    background-color: #0056b3; /* Darker blue */
+    background-color: #0056b3;
     transform: scale(1.05);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
 #externalLink {
-    background-color: #ff6f61; /* Coral */
+    background-color: #ff6f61;
 }
 
 #externalLink:hover {
-    background-color: #ff3d2e; /* Darker coral */
+    background-color: #ff3d2e;
 }
 
 /* Sidebar Styles */
 .sidebar {
-    flex: 1; /* Allow sidebar to take up less space */
-    background-color: #0277bd; /* Match the header background color */
-    color: #ffffff; /* White text color for contrast */
+    flex: 1;
+    background-color: #0277bd;
+    color: #ffffff;
     border-radius: 10px;
     padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
-    position: sticky; /* Sticky position for sidebar */
-    top: 0; /* Stick to the top */
-    max-height: calc(100vh - 40px); /* Adjust height to fit the viewport */
-    overflow-y: auto; /* Add scroll if the content overflows */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top: 0;
+    max-height: calc(100vh - 40px);
+    overflow-y: auto;
 }
 
 .sidebar h2 {
     margin-top: 0;
     font-size: 1.5em;
-    color: #ffffff; /* White header color */
+    color: #ffffff;
 }
 
 .sidebar ul {
@@ -150,29 +145,28 @@ button:hover {
 .sidebar li {
     padding: 10px;
     margin: 5px 0;
-    border: 1px solid #ffffff; /* White border for contrast */
+    border: 1px solid #ffffff;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
 .sidebar li:hover {
-    background-color: #01579b; /* Darker blue on hover */
+    background-color: #01579b;
 }
 
 .sidebar li.active {
-    background-color: #0288d1; /* Lighter blue for active item */
+    background-color: #0288d1;
 }
-
 
 /* Footer Styles */
 footer {
-    background: linear-gradient(135deg, #1e3c72, #2a5298); /* Gradient from dark blue to lighter blue */
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
     color: #ffffff;
     text-align: center;
     padding: 20px;
     margin-top: 20px;
-    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .footer-content {
@@ -193,45 +187,46 @@ footer a:hover {
 /* Responsive Styles */
 @media (max-width: 768px) {
     header h1 {
-        font-size: 1.5em; /* Smaller header font size on mobile */
+        font-size: 1.5em;
     }
 
     header p {
-        font-size: 0.9em; /* Smaller text for mobile */
+        font-size: 0.9em;
     }
 
     .button-container {
-        flex-direction: column; /* Stack buttons vertically on small screens */
-        align-items: center; /* Center align buttons */
+        flex-direction: column;
+        align-items: center;
     }
 
     button {
-        width: 100%; /* Full width buttons on small screens */
-        max-width: 300px; /* Max width for buttons */
+        width: 100%;
+        max-width: 300px;
     }
 
     .image-container {
-        height: auto; /* Auto height for images on small screens */
+        height: auto;
     }
 
     main {
-        flex-direction: column; /* Stack content and sidebar vertically on small screens */
+        flex-direction: column;
     }
 
     .sidebar {
         width: 100%;
         margin-top: 20px;
-        max-height: none; /* Remove max-height constraint on small screens */
-        position: static; /* Static position for mobile */
-        overflow-y: visible; /* Show full content without scroll */
+        max-height: none;
+        position: static;
+        overflow-y: visible;
     }
 }
-/* hide button's red color the rest of buttons are styled together*/
-#hideButton{
+
+/* Hide button's red color */
+#hideButton {
     background-color: red;
 }
 
-/* Liked animation (scale up + glow effect) */
+/* Liked animation */
 @keyframes like-animation {
     0% {
       transform: scale(1);
@@ -239,36 +234,44 @@ footer a:hover {
     }
     50% {
       transform: scale(1.2);
-      box-shadow: 0 0 20px rgba(0, 255, 0, 0.8); /* Green glow */
+      box-shadow: 0 0 20px rgba(0, 255, 0, 0.8);
     }
     100% {
       transform: scale(1);
       box-shadow: none;
     }
-  }
-  
-  .liked {
+}
+
+.liked {
     animation: like-animation 1s ease;
-  }
-  
-  /* Disliked animation (shake effect + red tint) */
-  @keyframes dislike-animation {
+}
+
+/* Disliked animation */
+@keyframes dislike-animation {
     0%, 100% {
       transform: translateX(0);
       filter: none;
     }
     25% {
       transform: translateX(-10px);
-      filter: hue-rotate(150deg); /* Red tint */
+      filter: hue-rotate(150deg);
     }
     75% {
       transform: translateX(10px);
-      filter: hue-rotate(150deg); /* Red tint */
+      filter: hue-rotate(150deg);
     }
-  }
-  
-  .disliked {
+}
+
+.disliked {
     animation: dislike-animation 1s ease;
-  }
-  
-  
+}
+#hiddenImagesDropdown {
+    padding: 10px;
+    margin-right: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.unhideButton{
+    padding: 2px;
+}
