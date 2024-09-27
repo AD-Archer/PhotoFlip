@@ -124,27 +124,33 @@ function populateHiddenImagesDropdown() {
 }
 
 // Function to unhide the selected image
-// Function to unhide the selected image
 function unhideImage() {
   const dropdown = document.getElementById('hiddenImagesDropdown');
   const selectedValue = dropdown.value;
 
   if (selectedValue) {
-    // Add the image back to the main images array
+    // Retrieve the image to unhide using the selected value
     const imageToUnhide = hiddenImages[selectedValue];
-    images.push(imageToUnhide);
 
-    // Remove the image from the hidden images
-    delete hiddenImages[selectedValue];
+    // Ensure that imageToUnhide exists before proceeding
+    if (imageToUnhide) {
+      // Add the image back to the main images array
+      images.push(imageToUnhide);
 
-    // Populate the dropdown again
-    populateHiddenImagesDropdown();
+      // Remove the image from the hidden images
+      delete hiddenImages[selectedValue];
 
-    // Set the current index to the last image after unhide
-    currentIndex = images.length - 1; // Always show the newly unhidden image
-    updateImage();
+      // Populate the dropdown again
+      populateHiddenImagesDropdown();
+
+      // Set the current index to the last image after unhide, or to the unhidden image
+      currentIndex = images.length - 1; // Always show the newly unhidden image
+      updateImage();
+    }
   }
 }
+
+
 
 
 
