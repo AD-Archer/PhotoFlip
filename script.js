@@ -241,6 +241,25 @@ function updateLikeDislikeUI() {
 }
 
 
+document.getElementById('shareButton').addEventListener('click', function() {
+  const currentImageLink = document.getElementById('imageLink').href;
+  const shareText = `Check out this image: ${currentImageLink}`;
+
+  if (navigator.share) {
+    navigator.share({
+      title: 'Shared Image',
+      text: shareText,
+      url: currentImageLink
+    }).then(() => {
+      console.log('Successful share');
+    }).catch((error) => {
+      console.error('Error sharing:', error);
+    });
+  } else {
+    alert(`Copy and share this link: ${currentImageLink}`);
+  }
+});
+
 
 // Initialize the first image display and the like/dislike counts
 updateImage();
