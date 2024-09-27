@@ -224,7 +224,7 @@ footer a:hover {
 
 /* Hide button's red color */
 #hideButton {
-    background-color: red;
+    background-color: gray;
 }
 
 /* Liked animation */
@@ -274,6 +274,7 @@ footer a:hover {
 }
 
 .unhideButton{
+    background-color: gray;
     padding: 2px;
     
 }
@@ -324,3 +325,16 @@ footer a:hover {
 .comment-section button:hover {
     background-color: #0056b3; /* Darker background on hover */
 }
+
+/* Coral red color for active Like button */
+button.active-like {
+    background-color: green;
+    color: white;
+  }
+  
+  /* Coral red color for active Dislike button */
+  button.active-dislike {
+    background-color: red;
+    color: white;
+  }
+  

@@ -41,12 +41,24 @@ let images = [
 let hiddenImages = {}; // Object to hold hidden images
 let currentIndex = 0;
 
+// Variables to store like/dislike counts
+let likeCount = 0;
+let dislikeCount = 0;
+
+// Variables to track the like and dislike states
+let liked = false;
+let disliked = false;
+
 // Select the DOM elements
 const mainImage = document.getElementById('mainImage');
 const prevButton = document.getElementById('prevButton');
 const nextButton = document.getElementById('nextButton');
 const hideButton = document.getElementById("hideButton");
 const musicButton = document.getElementById('externalLink');
+const likeButton = document.getElementById("likebutton");
+const dislikeButton = document.getElementById("dislikebutton");
+const likeCounter = document.getElementById("likeCount");
+const dislikeCounter = document.getElementById("dislikeCount");
 
 // Set up the music button click event
 musicButton.onclick = function() {
@@ -145,30 +157,91 @@ nextButton.addEventListener('click', () => {
 
 hideButton.addEventListener("click", hideImage);
 
-const likeButton = document.getElementById("likebutton");
-const dislikeButton = document.getElementById("dislikebutton");
+// Unhide button event listener
+document.getElementById("unhideButton").addEventListener("click", unhideImage);
 
-// Function to trigger like animation
+// Comment button event listener
+document.getElementById("comment-button").addEventListener("click", () => { 
+  document.getElementById("comment-text-area").innerText = ''; // Clears text area
+});
+
+// Like button event listener
 likeButton.addEventListener('click', () => {
+  if (liked) {
+    // If already liked, unlike it
+    likeCount--;
+    liked = false;
+  } else {
+    // If not liked yet, like it
+    likeCount++;
+    liked = true;
+    
+    // If it was disliked, revert the dislike
+    if (disliked) {
+      dislikeCount--;
+      disliked = false;
+    }
+  }
+
+  // trigger like animation 
   mainImage.classList.add('liked');  // Add animation class
   setTimeout(() => {
     mainImage.classList.remove('liked');  // Remove after animation finishes
   }, 1000);  // Duration matches CSS animation
+
+  updateLikeDislikeUI(); // Update the UI with new counts
 });
 
-// Function to trigger dislike animation
+// Dislike button event listener
 dislikeButton.addEventListener('click', () => {
+  if (disliked) {
+    // If already disliked, remove the dislike
+    dislikeCount--;
+    disliked = false;
+  } else {
+    // If not disliked yet, dislike it
+    dislikeCount++;
+    disliked = true;
+    
+    // If it was liked, revert the like
+    if (liked) {
+      likeCount--;
+      liked = false;
+    }
+  }
+// trigger dislike animation
   mainImage.classList.add('disliked');  // Add animation class
   setTimeout(() => {
     mainImage.classList.remove('disliked');  // Remove after animation finishes
   }, 1000);  // Duration matches CSS animation
+
+  updateLikeDislikeUI(); // Update the UI with new counts
 });
 
-// Unhide button event listener
-document.getElementById("unhideButton").addEventListener("click", unhideImage);
+function updateLikeDislikeUI() {
+  // Get the like and dislike buttons from the "other-buttons" section
+  const likeButton = document.querySelector('#likebutton');
+  const dislikeButton = document.querySelector('#dislikebutton');
 
-document.getElementById("comment-button").addEventListener("click", () => { //deletes clears text within 
-  document.getElementById("comment-text-area").innerText = ''
-});
-// Initialize the first image display
+  // Toggle button styles for the liked state (coral red for active like)
+  if (liked) {
+    likeButton.classList.add('active-like');
+    dislikeButton.classList.remove('active-dislike'); // Ensure dislike is not active
+  } else {
+    likeButton.classList.remove('active-like');
+  }
+
+  // Toggle button styles for the disliked state (coral red for active dislike)
+  if (disliked) {
+    dislikeButton.classList.add('active-dislike');
+    likeButton.classList.remove('active-like'); // Ensure like is not active
+  } else {
+    dislikeButton.classList.remove('active-dislike');
+  }
+}
+
+
+
+// Initialize the first image display and the like/dislike counts
 updateImage();
+updateLikeDislikeUI();
