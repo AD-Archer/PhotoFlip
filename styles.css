@@ -30,7 +30,7 @@ header {
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin: 20px auto;
-    max-width: 100%;
+    max-width: 90%; /* Ensure it fits well on smaller screens */
 }
 
 header h1 {
@@ -60,16 +60,19 @@ main {
 /* Image Section */
 .image-section {
     text-align: center;
+    margin-bottom: 20px; /* Space between image and buttons */
 }
 
 .image-section img {
-    width: 100%;
+    width: 70%;
+    max-width: 70%;
     height: auto;
     object-fit: cover;
     border-radius: 50px;
     transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
 }
 
+/* Button Container */
 .button-container, .other-buttons {
     display: flex;
     justify-content: center;
@@ -96,6 +99,16 @@ button:hover {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
+/* Active States */
+button.active-like {
+    background-color: var(--button-active-like);
+}
+
+button.active-dislike {
+    background-color: var(--button-active-dislike);
+}
+
+/* Specific Button Styles */
 #externalLink {
     background-color: #ff6f61; /* Coral Color */
 }
@@ -158,4 +171,56 @@ footer {
         width: 100%;
         max-width: 300px;
     }
+}
+
+.image-section img {
+    opacity: 0; /* Start fully transparent */
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+.image-section img.show {
+    opacity: 1; /* Fade in */
+}
+
+button:hover {
+    background-color: var(--button-bg-hover);
+    transform: scale(1.1); /* Increase scale slightly on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* Animation for liked state */
+@keyframes likeAnimation {
+    0% { transform: scale(1); }
+    25% { transform: scale(1.1); background-color: green; }
+    50% { transform: scale(1); }
+    75% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+  }
+  
+  /* Animation for disliked state */
+  @keyframes dislikeAnimation {
+    0% { transform: scale(1); }
+    25% { transform: scale(1); background-color: red; }
+    50% { transform: scale(1.1); }
+    75% { transform: scale(1); }
+    100% { transform: scale(1); }
+  }
+  
+  .liked {
+    animation: likeAnimation 1s forwards;
+  }
+  
+  .disliked {
+    animation: dislikeAnimation 1s forwards;
+  }
+  
+
+#comment-box {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out; /* Smooth transition */
+}
+
+#comment-box.open {
+    max-height: 200px; /* Adjust as needed for content */
 }

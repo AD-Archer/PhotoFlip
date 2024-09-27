@@ -55,10 +55,10 @@ const prevButton = document.getElementById('prevButton');
 const nextButton = document.getElementById('nextButton');
 const hideButton = document.getElementById("hideButton");
 const musicButton = document.getElementById('externalLink');
-const likeButton = document.getElementById("likebutton");
-const dislikeButton = document.getElementById("dislikebutton");
-const likeCounter = document.getElementById("likeCount");
-const dislikeCounter = document.getElementById("dislikeCount");
+const likeButton = document.getElementById("likeButton");
+const dislikeButton = document.getElementById("dislikeButton");
+const likeCounter = document.getElementById("likeCount") || document.createElement('div'); // Fallback if not found
+const dislikeCounter = document.getElementById("dislikeCount") || document.createElement('div'); // Fallback if not found
 
 // Set up the music button click event
 musicButton.onclick = function() {
@@ -73,7 +73,7 @@ function updateImage() {
   setTimeout(() => {
     mainImage.src = images[currentIndex].src;
     mainImage.alt = images[currentIndex].alt;
-    
+
     // Update the figcaption with the current image's alt text
     const caption = document.getElementById('caption');
     caption.textContent = images[currentIndex].alt; // Update the figcaption content
@@ -84,21 +84,24 @@ function updateImage() {
 
 // Function to hide the current image
 function hideImage() {
-  // Add the current image to hiddenImages
-  hiddenImages[currentIndex] = images[currentIndex];
-  
-  // Remove the image from the main images array
-  images.splice(currentIndex, 1);
-  
-  // Handle the case where we removed the last image
-  if (currentIndex >= images.length) {
-    currentIndex = images.length - 1;
-  }
+  mainImage.classList.remove('show'); // Trigger fade-out
 
-  // Update the displayed image
-  updateImage();
-  
-  // Populate the hidden images dropdown after hiding
+  // Wait for the transition to end before hiding the image
+  setTimeout(() => {
+    // Add the current image to hiddenImages
+    hiddenImages[currentIndex] = images[currentIndex];
+
+    // Remove the image from the main images array
+    images.splice(currentIndex, 1);
+
+    // Handle the case where we removed the last image
+    if (currentIndex >= images.length) {
+      currentIndex = images.length - 1;
+    }
+
+    // Update the displayed image
+    updateImage();
+  }, 500); // Delay matches the CSS transition duration
   populateHiddenImagesDropdown();
 }
 
@@ -113,36 +116,37 @@ function populateHiddenImagesDropdown() {
 
   // Populate the dropdown with hidden images
   for (const index in hiddenImages) {
-      const option = document.createElement('option');
-      option.value = index;
-      option.textContent = hiddenImages[index].alt; // Use the alt text for display
-      dropdown.appendChild(option);
+    const option = document.createElement('option');
+    option.value = index;
+    option.textContent = hiddenImages[index].alt; // Use the alt text for display
+    dropdown.appendChild(option);
   }
 }
 
+// Function to unhide the selected image
 // Function to unhide the selected image
 function unhideImage() {
   const dropdown = document.getElementById('hiddenImagesDropdown');
   const selectedValue = dropdown.value;
 
   if (selectedValue) {
-      // Add the image back to the main images array
-      const imageToUnhide = hiddenImages[selectedValue];
-      images.push(imageToUnhide);
+    // Add the image back to the main images array
+    const imageToUnhide = hiddenImages[selectedValue];
+    images.push(imageToUnhide);
 
-      // Remove the image from the hidden images
-      delete hiddenImages[selectedValue];
+    // Remove the image from the hidden images
+    delete hiddenImages[selectedValue];
 
-      // Populate the dropdown again
-      populateHiddenImagesDropdown();
+    // Populate the dropdown again
+    populateHiddenImagesDropdown();
 
-      // Update the image display if necessary
-      if (currentIndex >= images.length) {
-          currentIndex = images.length - 1; // Adjust currentIndex if needed
-      }
-      updateImage();
+    // Set the current index to the last image after unhide
+    currentIndex = images.length - 1; // Always show the newly unhidden image
+    updateImage();
   }
 }
+
+
 
 // Event listeners for the buttons
 prevButton.addEventListener('click', () => {
@@ -162,7 +166,7 @@ document.getElementById("unhideButton").addEventListener("click", unhideImage);
 
 // Comment button event listener
 document.getElementById("comment-button").addEventListener("click", () => { 
-  document.getElementById("comment-text-area").innerText = ''; // Clears text area
+  document.getElementById("comment-text-area").value = ''; // Clears text area
 });
 
 // Like button event listener
@@ -175,7 +179,7 @@ likeButton.addEventListener('click', () => {
     // If not liked yet, like it
     likeCount++;
     liked = true;
-    
+
     // If it was disliked, revert the dislike
     if (disliked) {
       dislikeCount--;
@@ -183,7 +187,7 @@ likeButton.addEventListener('click', () => {
     }
   }
 
-  // trigger like animation 
+  // Trigger like animation 
   mainImage.classList.add('liked');  // Add animation class
   setTimeout(() => {
     mainImage.classList.remove('liked');  // Remove after animation finishes
@@ -202,14 +206,15 @@ dislikeButton.addEventListener('click', () => {
     // If not disliked yet, dislike it
     dislikeCount++;
     disliked = true;
-    
+
     // If it was liked, revert the like
     if (liked) {
       likeCount--;
       liked = false;
     }
   }
-// trigger dislike animation
+
+  // Trigger dislike animation
   mainImage.classList.add('disliked');  // Add animation class
   setTimeout(() => {
     mainImage.classList.remove('disliked');  // Remove after animation finishes
@@ -218,31 +223,30 @@ dislikeButton.addEventListener('click', () => {
   updateLikeDislikeUI(); // Update the UI with new counts
 });
 
+// Function to update like/dislike UI
 function updateLikeDislikeUI() {
-  // Get the like and dislike buttons from the "other-buttons" section
-  const likeButton = document.querySelector('#likebutton');
-  const dislikeButton = document.querySelector('#dislikebutton');
-
-  // Toggle button styles for the liked state (coral red for active like)
+  // Toggle button styles for the liked state
   if (liked) {
     likeButton.classList.add('active-like');
-    dislikeButton.classList.remove('active-dislike'); // Ensure dislike is not active
   } else {
     likeButton.classList.remove('active-like');
   }
 
-  // Toggle button styles for the disliked state (coral red for active dislike)
+  // Toggle button styles for the disliked state
   if (disliked) {
     dislikeButton.classList.add('active-dislike');
-    likeButton.classList.remove('active-like'); // Ensure like is not active
   } else {
     dislikeButton.classList.remove('active-dislike');
   }
+
+  // Update the like and dislike counters
+  likeCounter.textContent = `Likes: ${likeCount}`;
+  dislikeCounter.textContent = `Dislikes: ${dislikeCount}`;
 }
 
-
+// Share button event listener
 document.getElementById('shareButton').addEventListener('click', function() {
-  const currentImageLink = document.getElementById('imageLink').href;
+  const currentImageLink = images[currentIndex].link; // Update to use the current image link
   const shareText = `Check out this image: ${currentImageLink}`;
 
   if (navigator.share) {
@@ -253,14 +257,13 @@ document.getElementById('shareButton').addEventListener('click', function() {
     }).then(() => {
       console.log('Successful share');
     }).catch((error) => {
-      console.error('Error sharing:', error);
+      console.log('Error sharing:', error);
     });
   } else {
-    alert(`Copy and share this link: ${currentImageLink}`);
+    console.log('Share not supported');
   }
 });
 
-
-// Initialize the first image display and the like/dislike counts
+// Initial image setup
 updateImage();
-updateLikeDislikeUI();
+populateHiddenImagesDropdown(); // Populate dropdown on startup
