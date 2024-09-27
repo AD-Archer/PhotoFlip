@@ -1,16 +1,30 @@
+/* CSS Variables for Consistent Theme */
+:root {
+    --primary-gradient: linear-gradient(135deg, #6a11cb, #2575fc); /* Purple Gradient */
+    --header-gradient: linear-gradient(135deg, #e0f7fa, #b3e5fc);
+    --footer-gradient: linear-gradient(135deg, #1e3c72, #2a5298);
+    --button-bg: #007bff; /* Blue Button Background */
+    --button-bg-hover: #0056b3; /* Darker Blue Button Hover */
+    --button-active-like: green; /* Like Button Active Color */
+    --button-active-dislike: red; /* Dislike Button Active Color */
+    --button-gray: gray; /* Gray Buttons Background */
+    --text-color: #333; /* General Text Color */
+    --white: #ffffff; /* White Color */
+}
+
 /* General Styles */
 html, body {
     height: 100%;
     margin: 0;
-    font-family: 'Roboto', sans-serif; /* Or Arial */
-    color: #333;
-    background: linear-gradient(135deg, #a8c0ff, #3f2b96);
+    font-family: 'Roboto', sans-serif;
+    color: var(--text-color);
+    background: var(--primary-gradient); /* Set background to purple gradient */
 }
 
 /* Header Styles */
 header {
-    background: linear-gradient(135deg, #e0f7fa, #b3e5fc);
-    color: #333;
+    background: var(--header-gradient);
+    color: var(--text-color);
     text-align: center;
     padding: 30px 20px;
     border-radius: 15px;
@@ -36,8 +50,8 @@ header p {
 /* Main Styles */
 main {
     display: flex;
-    flex-direction: row;
-    align-items: flex-start;
+    flex-direction: column;
+    align-items: center;
     padding: 20px;
     max-width: 1200px;
     margin: 0 auto;
@@ -45,46 +59,26 @@ main {
 
 /* Image Section */
 .image-section {
-    flex: 3;
     text-align: center;
-    margin-right: 20px;
 }
 
-.image-container {
-    margin-bottom: 20px;
+.image-section img {
     width: 100%;
-    max-width: 800px;
-    aspect-ratio: 16/9; /* Or adjust to your desired aspect ratio */
-    display: flex;
-    justify-content: center;
-    overflow: hidden;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    background-color: #ffffff;
-}
-
-img {
-    width: 100%;
-    height: 100%;
+    height: auto;
     object-fit: cover;
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
     border-radius: 50px;
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
 }
 
-img.show {
-    opacity: 1;
-}
-
-/* Button Container Styles */
-.button-container {
+.button-container, .other-buttons {
     display: flex;
     justify-content: center;
     gap: 15px;
-    margin-top: 20px;
+    margin: 10px 0;
     flex-wrap: wrap;
 }
 
+/* Button Styles */
 button {
     padding: 15px 30px;
     font-size: 18px;
@@ -92,97 +86,62 @@ button {
     border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
-    width: auto;
-    max-width: 180px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-/* Button Styles */
-button {
-    background-color: #007bff;
-    color: #ffffff;
+    background-color: var(--button-bg);
+    color: var(--white);
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: var(--button-bg-hover);
     transform: scale(1.05);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
 #externalLink {
-    background-color: #ff6f61;
+    background-color: #ff6f61; /* Coral Color */
 }
 
 #externalLink:hover {
-    background-color: #ff3d2e;
-}
-
-/* Sidebar Styles */
-.sidebar {
-    flex: 1;
-    background-color: #0277bd;
-    color: #ffffff;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    position: sticky;
-    top: 0;
-    max-height: calc(100vh - 40px);
-    overflow-y: auto;
-}
-
-.sidebar h2 {
-    margin-top: 0;
-    font-size: 1.5em;
-    color: #ffffff;
-}
-
-.sidebar ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.sidebar li {
-    padding: 10px;
-    margin: 5px 0;
-    border: 1px solid #ffffff;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.sidebar li:hover {
-    background-color: #01579b;
-}
-
-.sidebar li.active {
-    background-color: #0288d1;
+    background-color: #ff3d2e; /* Darker Coral on Hover */
 }
 
 /* Footer Styles */
 footer {
-    background: linear-gradient(135deg, #1e3c72, #2a5298);
-    color: #ffffff;
+    background: var(--footer-gradient);
+    color: var(--white);
     text-align: center;
     padding: 20px;
     margin-top: 20px;
     box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.footer-content {
-    max-width: 1200px;
-    margin: 0 auto;
+/* General Styles for Comment Section */
+.comment-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    max-width: 800px;
 }
 
-footer a {
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 18px;
+#comment-text-area {
+    width: 100%;
+    height: 100px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
 }
 
-footer a:hover {
-    text-decoration: underline;
+.comment-section button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--button-bg);
+    color: var(--white);
 }
 
 /* Responsive Styles */
@@ -195,147 +154,8 @@ footer a:hover {
         font-size: 0.9em;
     }
 
-    .button-container {
-        flex-direction: column;
-        align-items: center;
-    }
-
     button {
         width: 100%;
         max-width: 300px;
     }
-
-    .image-container {
-        height: auto;
-    }
-
-    main {
-        flex-direction: column;
-    }
-
-    .sidebar {
-        width: 100%;
-        margin-top: 20px;
-        max-height: none;
-        position: static;
-        overflow-y: visible;
-    }
 }
-
-/* Hide button's red color */
-#hideButton {
-    background-color: gray;
-}
-
-/* Liked animation */
-@keyframes like-animation {
-    0% {
-      transform: scale(1);
-      box-shadow: none;
-    }
-    50% {
-      transform: scale(1.2);
-      box-shadow: 0 0 20px rgba(0, 255, 0, 0.8);
-    }
-    100% {
-      transform: scale(1);
-      box-shadow: none;
-    }
-}
-
-.liked {
-    animation: like-animation 1s ease;
-}
-
-/* Disliked animation */
-@keyframes dislike-animation {
-    0%, 100% {
-      transform: translateX(0);
-      filter: none;
-    }
-    25% {
-      transform: translateX(-10px);
-      filter: hue-rotate(150deg);
-    }
-    75% {
-      transform: translateX(10px);
-      filter: hue-rotate(150deg);
-    }
-}
-
-.disliked {
-    animation: dislike-animation 1s ease;
-}
-#hiddenImagesDropdown {
-    padding: 10px;
-    margin-right: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-}
-
-.unhideButton{
-    background-color: gray;
-    padding: 2px;
-    
-}
-/* We chose to style figcaption and select and select hidden image within html */
-
-/* General Styles for Comment Section */
-.comment-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 20px auto; /* Center the section with margin */
-    padding: 20px;
-    background-color: rgba(255, 255, 255, 0.1); /* Light background */
-    border-radius: 10px;
-    max-width: 800px; /* Set a max width */
-}
-
-/* Comment Text Area */
-#comment-text-area {
-    width: 100%; /* Full width */
-    height: 100px; /* Height for the text area */
-    border: 1px solid #ccc; /* Border color */
-    border-radius: 5px; /* Rounded corners */
-    padding: 10px; /* Padding inside the text area */
-    margin-bottom: 10px; /* Space below text area */
-}
-
-/* Separator Line */
-.comment-section hr {
-    width: 100%;
-    border: 1px solid gray; /* Grayish line */
-    margin: 20px 0; /* Spacing above and below the line */
-}
-
-/* Button Styles for Comment Section */
-.comment-section button {
-    padding: 10px 20px; /* Padding for the button */
-    font-size: 16px; /* Button font size */
-    border: none; /* Remove border */
-    border-radius: 5px; /* Rounded corners */
-    background-color: #007bff; /* Button background */
-    color: white; /* Text color */
-    cursor: pointer; /* Pointer cursor on hover */
-    display: flex;
-    align-items: center;
-}
-
-.comment-section button:hover {
-    background-color: #0056b3; /* Darker background on hover */
-}
-
-/* Coral red color for active Like button */
-button.active-like {
-    background-color: green;
-    color: white;
-  }
-  
-  /* Coral red color for active Dislike button */
-  button.active-dislike {
-    background-color: red;
-    color: white;
-  }
-  
- 
