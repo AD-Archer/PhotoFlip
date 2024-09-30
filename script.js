@@ -59,6 +59,9 @@ const likeButton = document.getElementById("likeButton");
 const dislikeButton = document.getElementById("dislikeButton");
 const likeCounter = document.getElementById("likeCount") || document.createElement('div'); // Fallback if not found
 const dislikeCounter = document.getElementById("dislikeCount") || document.createElement('div'); // Fallback if not found
+const feedbackButton = document.getElementById("feedbackButton")
+
+
 
 // Set up the music button click event
 musicButton.onclick = function() {
@@ -252,7 +255,7 @@ function updateLikeDislikeUI() {
 
 // Share button event listener
 document.getElementById('shareButton').addEventListener('click', function() {
-  const currentImageLink = images[currentIndex].link; // Update to use the current image link
+  const currentImageLink = images[currentIndex].src; // Update to use the current image link
   const shareText = `Check out this image: ${currentImageLink}`;
 
   if (navigator.share) {
@@ -269,6 +272,75 @@ document.getElementById('shareButton').addEventListener('click', function() {
     console.log('Share not supported');
   }
 });
+
+// Function to handle form submission
+document.getElementById('userForm').addEventListener('submit', function(event) {
+  event.preventDefault(); // Prevent the default form submission
+
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const selectedTheme = document.getElementById('themeDropdown').value;
+
+  // Validate that a theme has been selected
+  if (selectedTheme) {
+      // Store user preferences in local storage
+      localStorage.setItem('userName', name);
+      localStorage.setItem('userEmail', email);
+      localStorage.setItem('userTheme', selectedTheme);
+
+      // Display a response message
+      document.getElementById('formResponse').textContent = `Thank you, ${name}! Your preferences have been saved.`;
+
+      // Optionally, you can apply the selected theme immediately
+      applyTheme(selectedTheme);
+  } else {
+      document.getElementById('formResponse').textContent = 'Please select a theme.';
+  }
+
+  // Clear the form inputs
+  document.getElementById('userForm').reset();
+});
+
+// Function to apply the selected theme
+function applyTheme(theme) {
+  document.body.classList.remove('light', 'dark', 'colorful'); // Remove existing theme classes
+  document.body.classList.add(theme); // Add the selected theme class
+}
+
+// Check for saved user preferences on load
+window.onload = function() {
+  const savedTheme = localStorage.getItem('userTheme');
+  if (savedTheme) {
+      applyTheme(savedTheme);
+  }
+};
+
+// Show feedback form when the feedback button is clicked
+document.getElementById('feedbackButton').addEventListener('click', function() {
+  const feedbackFormSection = document.getElementById('feedbackFormSection');
+  feedbackFormSection.style.display = feedbackFormSection.style.display === 'none' ? 'block' : 'none';
+});
+
+// Function to handle feedback form submission
+document.getElementById('feedbackForm').addEventListener('submit', function(event) {
+  event.preventDefault(); // Prevent the default form submission
+
+  const feedbackText = document.getElementById('feedback').value;
+  const feedbackName = document.getElementById('feedbackName').value;
+  const feedbackEmail = document.getElementById('feedbackEmail').value;
+
+  // You can handle feedback submission logic here (e.g., send to server or store locally)
+  
+  // Display a response message
+  document.getElementById('feedbackResponse').textContent = `Thank you for your feedback, ${feedbackName || 'Guest'}!`;
+
+  // Optionally, save feedback to local storage (you can modify this as needed)
+  localStorage.setItem('userFeedback', JSON.stringify({ feedbackText, feedbackName, feedbackEmail }));
+
+  // Clear the form inputs
+  document.getElementById('feedbackForm').reset();
+});
+
 
 // Initial image setup
 updateImage();

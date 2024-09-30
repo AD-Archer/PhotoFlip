@@ -8,8 +8,9 @@
     --button-active-like: green; /* Like Button Active Color */
     --button-active-dislike: red; /* Dislike Button Active Color */
     --button-gray: gray; /* Gray Buttons Background */
-    --text-color: #333; /* General Text Color */
+    --text-color: White; /* General Text Color */
     --white: #ffffff; /* White Color */
+
 }
 
 /* General Styles */
