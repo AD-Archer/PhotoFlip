@@ -1,79 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Photo Flip</title>
-  <link href="styles.css" rel="stylesheet" type="text/css" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="manifest" href="/site.webmanifest">
-  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-  <meta name="msapplication-TileColor" content="#da532c">
-  <meta name="theme-color" content="#ffffff">
-  <script defer src="script.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Flip</title>
+    <link href="styles.css" rel="stylesheet" type="text/css" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <script defer src="script.js"></script>
 </head>
 
 <body>
-  <div id='background'>
-    <center>
-      <section>
-        <h1>Antonio Archer's Pirate Seafinder for Pics of the 7 Seas</h1>
-        <p>Explore easter eggs! Click the symphony button to enjoy a new song for every image.</p>
-      </section>
-      <hr>
+    <div id="background">
+        <center>
+            <header>
+                <h1>Antonio Archer's Pirate Seafinder for Pics of the 7 Seas</h1>
+                <p>Explore easter eggs! Click the symphony button to enjoy a new song for every image.</p>
+            </header>
+            <hr>
 
-      <main class="main">
-        <figure>
-          <a id="imageLink" href="#">
-            <img src="https://cdn.pixabay.com/photo/2013/11/01/11/13/dolphin-203875_1280.jpg" 
-                 alt="Dolphin" class="images" id="mainImage">
-          </a>
-          <figcaption style="color: aliceblue;" id="caption"></figcaption> <!--We chose to use styles here -->
-        </figure> 
-        <!-- Start of buttons -->
-         <!-- next and previous buttons -->
-        <div>
-           <button id='externalLink'>Symphony</button>
-        </div>
-        <button id="nextButton">Next</button>
-        <button id="prevButton">Previous</button>
-      </main>
-<!-- like and hide buttons -->
-      <section class="other-buttons" id="other-buttons">
-        <button id="likebutton">Like button</button>
-        <button id="hideButton">Hide image</button>
-        <button id="dislikebutton">Dislike Button</button>
-      </section>
+            <main class="grid-container">
+                <figure class="image-section">
+                    <a id="imageLink" href="#">
+                        <img src="https://cdn.pixabay.com/photo/2013/11/01/11/13/dolphin-203875_1280.jpg" 
+                             alt="Dolphin" class="images" id="mainImage">
+                    </a>
+                    <figcaption id="caption" class="caption"></figcaption>
+                </figure>
+                
+                <div class="button-container">
+                    <button id="externalLink">Symphony</button>
+                    <button id="nextButton">Next</button>
+                    <button id="prevButton">Previous</button>
+                </div>
+                
+                <div class="other-buttons">
+                    <button id="likeButton">Like</button>
+                    <button id="hideButton">Hide Image</button>
+                    <button id="dislikeButton">Dislike</button>
+                </div>
 
-      <!-- unhide menu and section -->
+                <section id="menuSection">
+                    <label for="hiddenImagesDropdown">Select Hidden Image:</label>
+                    <select id="hiddenImagesDropdown">
+                        <option value="">-- Select an Image --</option>
+                    </select>
+                    <button id="unhideButton" class="unhideButton">Unhide Selected</button>
+                </section>
+            </main>
+        </center>
+    </div>
 
-      <section id="menuSection">
-        <label style="color: aliceblue;" for="hiddenImagesDropdown">Select Hidden Image:</label> <!--We chose to use styles here -->
-        <select id="hiddenImagesDropdown">
-            <option value="">-- Select an Image --</option>
-        </select>
-        <button id="unhideButton" class="unhideButton">Unhide most recent</button>
-    </section>    
-    </center>
-  </div>
-  <br>
-  
-  <!-- comment section -->
-  <div id="comment-section" class="comment-section">
-    <section>
-    <h1>Comment Section</h1>
-    <textarea id="comment-text-area">leave any comments here</textarea>
-    <center>
-    <button id="comment-button">enter</button>
-  </section>
-</div>
-  <footer>
-      <a href="https://github.com/AD-Archer">Back to my GitHub</a>
-    </center>
-  </footer>
+    <div id="comment-section" class="comment-section">
+        <h2>Comment Section</h2>
+        <textarea id="comment-text-area" placeholder="Leave any comments here"></textarea>
+        <button id="comment-button">Enter</button>
+    </div>
 
-  <script defer src="script.js"></script>
+    <footer>
+        <p>If you like this image, make sure to share it!</p>
+        <button id="shareButton">Share</button>
+    </footer>
+
+    <script defer src="script.js"></script>
 </body>
 </html>
